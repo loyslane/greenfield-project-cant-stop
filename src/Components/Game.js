@@ -12,7 +12,7 @@ class Game extends Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.state.playerCount);
     return (
       <div>
         <Header />
@@ -30,4 +30,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Game);
+export default connect(mapStateToProps, null)(Game);

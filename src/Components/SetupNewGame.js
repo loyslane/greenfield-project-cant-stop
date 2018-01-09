@@ -421,6 +421,7 @@ class SetupNewGame extends Component {
   }
 
   render() {
+    console.log(this.state.playerCount);
     return (
       <div>
         <Header />
