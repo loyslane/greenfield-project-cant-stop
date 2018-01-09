@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { setPlayerCount } from '../actions';
 import { setPlayers } from '../actions';
+import Header from './Header';
 
 
 class SetupNewGame extends Component {
@@ -408,24 +409,35 @@ class SetupNewGame extends Component {
     event.preventDefault();
     this.props.sendPlayerCount(this.state.playerCount);
     this.props.setPlayerColors(this.state.players);
-    this.props.history.push('/game');
+    let playersWithoutColors = 0;
+    this.state.players.forEach((player)=> {
+      if (!player.color) playersWithoutColors++;
+    });
+    if (playersWithoutColors) {
+      alert('Please choose a color for every player!');
+    } else {
+      this.props.history.push('/game');
+    }
   }
+
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        {this.choosePlayer1Color()}
-        <br/>
-        {this.choosePlayer2Color()}
-        <br/>
-        {this.choosePlayer3Color()}
-        <br/>
-        {this.choosePlayer4Color()}
-        <br/>
-        <button type='button' onClick={this.addPlayer}>+</button>
-        <button type='button' onClick={this.removePlayer}>-</button>
+      <div>
+        <Header />
         <hr/>
-        <input type='submit' value='Start Game' />
-      </form>
+        <form onSubmit={this.handleSubmit}>
+          {this.choosePlayer1Color()}
+          {this.choosePlayer2Color()}
+          {this.choosePlayer3Color()}
+          {this.choosePlayer4Color()}
+          <br/>
+          <button type='button' onClick={this.addPlayer}>+</button>
+          <button type='button' onClick={this.removePlayer}>-</button>
+          <br/>
+          <br/>
+          <input type='submit' value='Start Game' />
+        </form>
+      </div>
     );
   }
 }
