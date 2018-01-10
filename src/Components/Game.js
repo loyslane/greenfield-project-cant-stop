@@ -6,18 +6,21 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      players: this.props.setPlayers,
       playerCount: this.props.setPlayerCount,
-      players: this.props.setPlayers
+      currentPlayer: this.props.setCurrentPlayer
     }
   }
 
   render() {
-    console.log(this.state.playerCount);
     return (
       <div>
+        {this.setPlayerCount}
         <Header />
-        <h3>current player: </h3>
+        <h3>Current player: {this.state.players[this.state.currentPlayer - 1].color}</h3>
+        <button type='button' onClick={this.rollDice}>Roll dice</button>
         <p>THIS IS THE GAME PAGE!</p>
+        <button type='button' onClick={this.endTurn}>End turn</button>
       </div>
     );
   }
@@ -27,6 +30,7 @@ const mapStateToProps = (state) => {
   return {
     setPlayerCount: state.playerCount,
     setPlayers: state.players,
+    setCurrentPlayer: state.currentPlayerNumber
   };
 };
 

@@ -6,7 +6,6 @@ import { setPlayerCount } from '../actions';
 import { setPlayers } from '../actions';
 import Header from './Header';
 
-
 class SetupNewGame extends Component {
   constructor(props) {
     super(props);
@@ -37,10 +36,16 @@ class SetupNewGame extends Component {
 
   choosePlayer1Color = () => {
     if (this.state.players[0].color !== null) {
-      return (<label>Player 1 Color: {this.state.players[0].color}</label>)
+      return (
+        <div>
+          <br/>
+          <label>Player 1 Color: {this.state.players[0].color}</label>
+        </div>
+      )
     } else {
       return (
         <div>
+          <br/>
           <label>Player 1 Color: </label>
           <button className='colorButtons' onClick={this.chooseBlue1}>blue</button>
           <button className='colorButtons' onClick={this.chooseGreen1}>green</button>
@@ -52,10 +57,16 @@ class SetupNewGame extends Component {
   };
   choosePlayer2Color = () => {
     if (this.state.players[1].color !== null) {
-      return (<label>Player 2 Color: {this.state.players[1].color}</label>)
+      return (
+        <div>
+          <br/>
+          <label>Player 2 Color: {this.state.players[1].color}</label>
+        </div>
+      )
     } else {
       return (
         <div>
+          <br/>
           <label>Player 2 Color: </label>
           <button className='colorButtons' onClick={this.chooseBlue2}>blue</button>
           <button className='colorButtons' onClick={this.chooseGreen2}>green</button>
@@ -68,10 +79,16 @@ class SetupNewGame extends Component {
   choosePlayer3Color = () => {
     if (this.state.players[2]) {
       if (this.state.players[2].color !== null) {
-        return (<label>Player 3 Color: {this.state.players[2].color}</label>)
+        return (
+          <div>
+            <br/>
+            <label>Player 3 Color: {this.state.players[2].color}</label>
+          </div>
+        )
       } else {
         return (
           <div>
+            <br/>
             <label>Player 3 Color: </label>
             <button className='colorButtons' onClick={this.chooseBlue3}>blue</button>
             <button className='colorButtons' onClick={this.chooseGreen3}>green</button>
@@ -85,10 +102,16 @@ class SetupNewGame extends Component {
   choosePlayer4Color = () => {
     if (this.state.players[3]) {
       if (this.state.players[3].color !== null) {
-        return (<label>Player 4 Color: {this.state.players[3].color}</label>)
+        return (
+          <div>
+            <br/>
+            <label>Player 4 Color: {this.state.players[3].color}</label>
+          </div>
+        )
       } else {
         return (
           <div>
+            <br/>
             <label>Player 4 Color: </label>
             <button className='colorButtons' onClick={this.chooseBlue4}>blue</button>
             <button className='colorButtons' onClick={this.chooseGreen4}>green</button>
@@ -408,7 +431,7 @@ class SetupNewGame extends Component {
   handleSubmit (event) {
     event.preventDefault();
     this.props.sendPlayerCount(this.state.playerCount);
-    this.props.setPlayerColors(this.state.players);
+    this.props.sendPlayerColors(this.state.players);
     let playersWithoutColors = 0;
     this.state.players.forEach((player)=> {
       if (!player.color) playersWithoutColors++;
@@ -421,7 +444,6 @@ class SetupNewGame extends Component {
   }
 
   render() {
-    console.log(this.state.playerCount);
     return (
       <div>
         <Header />
@@ -453,7 +475,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
       sendPlayerCount: setPlayerCount,
-      setPlayerColors: setPlayers
+      sendPlayerColors: setPlayers
     }, dispatch)
   }
   
