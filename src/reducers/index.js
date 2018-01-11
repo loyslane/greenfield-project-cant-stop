@@ -3,16 +3,16 @@ import setPlayerCountReducer from './setPlayerCountReducer';
 import setPlayersReducer from './setPlayersReducer';
 import setCurrentPlayerReducer from './setCurrentPlayerReducer';
 import setChosenDiceComboReducer from './setChosenDiceComboReducer';
+import changeGameBoardReducer from './changeGameBoardReducer';
 // import numOfPlayersReducer from './numOfPlayersReducer';
-// import gameBoard from './gameBoardReducer';
 
 const rootReducer = combineReducers({
   playerCount: setPlayerCountReducer,
   players: setPlayersReducer,
   currentPlayerNumber: setCurrentPlayerReducer,
-  chosenDiceCombo: setChosenDiceComboReducer
+  chosenDiceCombo: setChosenDiceComboReducer,
+  gameBoard: changeGameBoardReducer
 //   numOfPlayers: numOfPlayersReducer,
-//   gameBoard: gameBoardReducer
 });
 
 export default rootReducer;
