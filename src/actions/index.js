@@ -11,3 +11,10 @@ export const setPlayers = (playerColors) => {
     payload: playerColors
   }
 }
+
+export const setChosenDiceCombo = (diceCombo) => {
+  return {
+    type: 'SET_DICE_COMBO',
+    payload: diceCombo
+  }
+}

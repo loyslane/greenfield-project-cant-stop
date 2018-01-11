@@ -1,0 +1,15 @@
+.dice {
+  width: auto;
+  height: 2em;
+  margin: 0 .1em;
+}
+
+.combos {
+  display: inline-block;
+  padding: 0 .75em;
+}
+
+.btn-block {
+  width: auto;
+  height: 4em;
+}

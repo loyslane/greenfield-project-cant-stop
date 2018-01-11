@@ -14,7 +14,7 @@ class SplashPage extends Component {
   render() {
     return (
       <div>
-        <img className="logo" src={require('../cant-and-stop.png')} alt="logo" />
+        <img className='logo' src={require('../images/cant-and-stop.png')} alt='logo' />
         <br/>
         <br/>
         <button className='btn' type='button' onClick={this.newGame}>New Game</button>

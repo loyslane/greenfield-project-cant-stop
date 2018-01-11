@@ -476,7 +476,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
       sendPlayerCount: setPlayerCount,
       sendPlayerColors: setPlayers
-    }, dispatch)
-  }
+    }, dispatch);
+  };
   
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(SetupNewGame));

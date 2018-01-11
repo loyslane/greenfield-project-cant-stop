@@ -1,37 +1,28 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import Header from './Header';
-import { connect } from 'react-redux';
+import CurrentPlayer from './CurrentPlayer';
+import GameBoard from './GameBoard';
 
 class Game extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      players: this.props.setPlayers,
-      playerCount: this.props.setPlayerCount,
-      currentPlayer: this.props.setCurrentPlayer
-    }
+
+  rollDice = () => {
+    this.props.history.push('/game/roll');
   }
 
   render() {
     return (
       <div>
-        {this.setPlayerCount}
         <Header />
-        <h3>Current player: {this.state.players[this.state.currentPlayer - 1].color}</h3>
+        <CurrentPlayer />
+        <GameBoard />
         <button type='button' onClick={this.rollDice}>Roll dice</button>
-        <p>THIS IS THE GAME PAGE!</p>
+        <br/>
+        <br/>
         <button type='button' onClick={this.endTurn}>End turn</button>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    setPlayerCount: state.playerCount,
-    setPlayers: state.players,
-    setCurrentPlayer: state.currentPlayerNumber
-  };
-};
-
-export default connect(mapStateToProps, null)(Game);
+export default withRouter(Game);

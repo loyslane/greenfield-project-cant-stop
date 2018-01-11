@@ -5,7 +5,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <img className="App-logo" src={require('../cant-stop.png')} alt="logo" />
+        <img className='App-logo' src={require('../images/cant-stop.png')} alt='logo' />
       </div>
     );
   }
