@@ -1,0 +1,9 @@
+.choice-buttons {
+  display: inline-block;
+}
+
+.btns {
+  margin: .5em 2em;
+  height: 3em;
+  width: 7em;
+}

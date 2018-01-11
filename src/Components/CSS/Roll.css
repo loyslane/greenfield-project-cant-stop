@@ -4,6 +4,14 @@
   margin: 0 .1em;
 }
 
+.dice-combos {
+  margin-top: 0;
+}
+
+.dice-rolled {
+  margin-bottom: 0;
+}
+
 .combos {
   display: inline-block;
   padding: 0 .75em;

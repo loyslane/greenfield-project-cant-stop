@@ -6,7 +6,7 @@ import { setChosenDiceCombo } from '../actions';
 import Header from './Header';
 import GameBoard from './GameBoard';
 import CurrentPlayer from './CurrentPlayer';
-import './Roll.css'
+import './CSS/Roll.css'
 
 
 class Roll extends Component {
@@ -80,18 +80,18 @@ class Roll extends Component {
       <div>
         <Header />
         <CurrentPlayer />
-        <h4>You rolled: 
+        <h4 className='dice-rolled'>You rolled:&nbsp;&nbsp;
           {this.showDice(this.state.diceRolls[0])}
           {this.showDice(this.state.diceRolls[1])}
           {this.showDice(this.state.diceRolls[2])}
           {this.showDice(this.state.diceRolls[3])}
         </h4>
-        <h3>Please choose a dice combo:
+        <h3 className='dice-combos'>Please choose a dice combo: 
           <p className='combos'>
             <button className='btn-block' type='button' onClick={this.combo1}>
               {this.showDice(this.state.allDiceCombos[0][0])}
               {this.showDice(this.state.allDiceCombos[0][1])}
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               {this.showDice(this.state.allDiceCombos[0][2])}
               {this.showDice(this.state.allDiceCombos[0][3])}
             </button>
@@ -100,7 +100,7 @@ class Roll extends Component {
             <button className='btn-block' type='button' onClick={this.combo2}>
               {this.showDice(this.state.allDiceCombos[1][0])}
               {this.showDice(this.state.allDiceCombos[1][1])}
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               {this.showDice(this.state.allDiceCombos[1][2])}
               {this.showDice(this.state.allDiceCombos[1][3])}
             </button>
@@ -109,7 +109,7 @@ class Roll extends Component {
             <button className='btn-block' type='button' onClick={this.combo3}>
               {this.showDice(this.state.allDiceCombos[2][0])}
               {this.showDice(this.state.allDiceCombos[2][1])}
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               {this.showDice(this.state.allDiceCombos[2][2])}
               {this.showDice(this.state.allDiceCombos[2][3])}
             </button>

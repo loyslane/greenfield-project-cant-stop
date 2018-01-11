@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './SplashPage.css';
+import './CSS/SplashPage.css';
 
 class SplashPage extends Component {
   constructor() {

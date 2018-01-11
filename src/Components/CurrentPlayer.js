@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './CSS/CurrentPlayer.css'
 
 class CurrentPlayer extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class CurrentPlayer extends Component {
   render() {
     return (
       <div>
-        <h3>Current player: {this.state.players[this.state.currentPlayer - 1].color}</h3>
+        <h3 className='current-player'>Current player: {this.state.players[this.state.currentPlayer - 1].color}</h3>
         <hr/>
       </div>
     );
