@@ -15,7 +15,10 @@ class Roll extends Component {
     this.state = {
       diceRolls: [],
       allDiceCombos: [],
-      allNumberCombos: []
+      allNumberCombos: [],
+      currentPlayerColor: this.props.setCurrentPlayerColor,
+      players: this.props.setPlayers,
+      gameBoard: this.props.setupGameBoard
     }
   }
 
@@ -36,11 +39,15 @@ class Roll extends Component {
       newAllNumberCombosArray.push([array[0] + array[1], array[2] + array[3]])
       newAllDiceCombosArray.push([array[0], array[2], array[1], array[3]]);
       newAllNumberCombosArray.push([array[0] + array[2], array[1] + array[3]])
-      newAllDiceCombosArray.push([array[0], array[3], array[2], array[1]]);
-      newAllNumberCombosArray.push([array[0] + array[3], array[2] + array[1]])
+      newAllDiceCombosArray.push([array[0], array[3], array[1], array[2]]);
+      newAllNumberCombosArray.push([array[0] + array[3], array[1] + array[2]])
     }
     comboPermutations(this.state.diceRolls);
-    console.log(newAllNumberCombosArray);
+    //
+    // if combos are invalid, end turn
+    // invalid scenario 1: all whites are assigned and not a single combo number matches the assignment
+    // invalid scenario 2: ....
+    //
     this.setState({
       diceRolls: newDiceRollsArray,
       allDiceCombos: newAllDiceCombosArray,
@@ -94,6 +101,11 @@ class Roll extends Component {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               {this.showDice(this.state.allDiceCombos[0][2])}
               {this.showDice(this.state.allDiceCombos[0][3])}
+              <p className='combo-numbers'>
+                {this.state.allNumberCombos[0][0]}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {this.state.allNumberCombos[0][1]}
+              </p>
             </button>
           </p>
           <p className='combos'>
@@ -103,6 +115,11 @@ class Roll extends Component {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               {this.showDice(this.state.allDiceCombos[1][2])}
               {this.showDice(this.state.allDiceCombos[1][3])}
+              <p className='combo-numbers'>
+                {this.state.allNumberCombos[1][0]}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {this.state.allNumberCombos[1][1]}
+              </p>
             </button>
           </p>
           <p className='combos'>
@@ -112,6 +129,11 @@ class Roll extends Component {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               {this.showDice(this.state.allDiceCombos[2][2])}
               {this.showDice(this.state.allDiceCombos[2][3])}
+              <p className='combo-numbers'>
+                {this.state.allNumberCombos[2][0]}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {this.state.allNumberCombos[2][1]}
+              </p>
             </button>
           </p>
         </h3>
@@ -121,10 +143,18 @@ class Roll extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    setCurrentPlayerColor: state.currentPlayerColor,
+    setPlayers: state.players,
+    setupGameBoard: state.gameBoard
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     sendChosenDiceCombo: setChosenDiceCombo
   }, dispatch);
 };
 
-export default withRouter(connect(null,mapDispatchToProps)(Roll));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Roll));

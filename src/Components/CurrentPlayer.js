@@ -1,20 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './CSS/CurrentPlayer.css'
+import './CSS/CurrentPlayer.css';
 
 class CurrentPlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: this.props.setPlayers,
-      currentPlayer: this.props.setCurrentPlayer
+      currentPlayerColor: this.props.setCurrentPlayerColor
     }
+  }
+
+  showPlayerMarker= (color) => {
+    if (color === 'blue') return <img className='player-marker' src={require('../images/blue.png')} alt='blue-marker' />;
+    if (color === 'green') return <img className='player-marker' src={require('../images/green.png')} alt='green-marker' />;
+    if (color === 'orange') return <img className='player-marker' src={require('../images/orange.png')} alt='orange-marker' />;
+    if (color === 'yellow') return <img className='player-marker' src={require('../images/yellow.png')} alt='yellow-marker' />;
   }
 
   render() {
     return (
       <div>
-        <h3 className='current-player'>Current player: {this.state.players[this.state.currentPlayer - 1].color}</h3>
+        <h3 className='current-player'>
+          Current player:
+          &nbsp;&nbsp;
+          {this.showPlayerMarker(this.state.currentPlayerColor)}
+          &nbsp;&nbsp;
+          {this.state.currentPlayerColor}
+          &nbsp;&nbsp;
+          {this.showPlayerMarker(this.state.currentPlayerColor)}
+        </h3>
         <hr/>
       </div>
     );
@@ -23,9 +37,8 @@ class CurrentPlayer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    setPlayers: state.players,
-    setCurrentPlayer: state.currentPlayerNumber
-  }
-}
+    setCurrentPlayerColor: state.currentPlayerColor
+  };
+};
 
-export default connect(mapStateToProps)(CurrentPlayer);
+export default connect(mapStateToProps,null)(CurrentPlayer);

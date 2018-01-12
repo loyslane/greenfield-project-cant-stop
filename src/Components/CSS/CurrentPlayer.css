@@ -1,3 +1,8 @@
-current-player {
-  margin: 0;
+.current-player {
+  margin: .5em 0 1em 0;
+}
+
+.player-marker {
+  width: auto;
+  height: 1.5em;
 }

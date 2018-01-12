@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { setPlayerCount } from '../actions';
 import { setPlayers } from '../actions';
+import { setCurrentPlayerColor } from '../actions';
 import Header from './Header';
 
 class SetupNewGame extends Component {
@@ -439,6 +440,7 @@ class SetupNewGame extends Component {
     if (playersWithoutColors) {
       alert('Please choose a color for every player!');
     } else {
+      this.props.sendCurrentPlayerColor(this.state.players[0].color);
       this.props.history.push('/game');
     }
   }
@@ -475,7 +477,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
       sendPlayerCount: setPlayerCount,
-      sendPlayerColors: setPlayers
+      sendPlayerColors: setPlayers,
+      sendCurrentPlayerColor: setCurrentPlayerColor
     }, dispatch);
   };
   

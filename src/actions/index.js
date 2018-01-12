@@ -18,3 +18,10 @@ export const setChosenDiceCombo = (diceCombo) => {
     payload: diceCombo
   }
 }
+
+export const setCurrentPlayerColor = (color) => {
+  return {
+    type: 'SET_CURRENT_PLAYER_COLOR',
+    payload: color
+  }
+}
