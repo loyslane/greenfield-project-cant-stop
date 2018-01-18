@@ -103,7 +103,7 @@ class Roll extends Component {
     // else if (!newTempMarkersObject[num1] && newTempMarkersObject.length < 3) console.log('valid combo: there is room');
     // else if (!newTempMarkersObject[num1] && newTempMarkersObject.length === 3) console.log('NOT a valid combo: there is no room');
     // this.props.sendChosenDiceCombo(chosenDiceComboArray);
-    // this.props.history.push('/game');
+    this.props.history.push('/game');
   }
 
   combo2 = () => {
