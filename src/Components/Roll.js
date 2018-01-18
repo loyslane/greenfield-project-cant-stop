@@ -6,6 +6,7 @@ import { setChosenDiceCombo } from '../actions';
 import Header from './Header';
 import GameBoard from './GameBoard';
 import CurrentPlayer from './CurrentPlayer';
+import { setTempMarkers } from '../actions';
 import './CSS/Roll.css'
 
 
@@ -18,7 +19,9 @@ class Roll extends Component {
       allNumberCombos: [],
       currentPlayerColor: this.props.setCurrentPlayerColor,
       players: this.props.setPlayers,
-      gameBoard: this.props.setupGameBoard
+      gameBoard: this.props.setupGameBoard,
+      tempMarkers: this.props.setTempMarkers,
+      availableNumbers: this.props.setAvailableNumbers
     }
   }
 
@@ -43,6 +46,27 @@ class Roll extends Component {
       newAllNumberCombosArray.push([array[0] + array[3], array[1] + array[2]])
     }
     comboPermutations(this.state.diceRolls);
+    // let validCombos = [false, false, false];
+    // console.log(this.state.tempMarkers)
+    // console.log(newAllNumberCombosArray)
+    // // for (let i = 0; i <= 2; i++) {
+    // //   if (this.state.tempMarkers[i].includes(newAllNumberCombosArray[i][0]) || this.state.tempMarkers[i].includes(newAllNumberCombosArray[i][0])) validCombos[i] = true;
+    // // }
+    // console.log(validCombos);
+    // console.log(this.state.availableNumbers);
+    // if (this.state.tempMarkers) console.log('there are temp markers');
+    // else console.log('there are no temp markers');
+    // if (this.state.availableNumbers)
+    // let counter = 0;
+    // for (let i = 0; i <= 2; i++) {
+    //   for (let j = 0; i <= 1; i++) {
+    //     if (newAllNumberCombosArray[i][j])
+    //   }
+    // }
+    // {this.state.allNumberCombos[0][0]}
+    // [0][0], [0][1]
+    // [1][0], [1][1]
+    // [2][0], [2][1]
     //
     // if combos are invalid, end turn
     // invalid scenario 1: all whites are assigned and not a single combo number matches the assignment
@@ -65,9 +89,21 @@ class Roll extends Component {
   }
 
   combo1 = () => {
-    const chosenDiceComboArray = this.state.allNumberCombos[0];
-    this.props.sendChosenDiceCombo(chosenDiceComboArray);
-    this.props.history.push('/game');
+    // const chosenDiceComboArray = this.state.allNumberCombos[0];
+    const num1 = this.state.allNumberCombos[0][0];
+    const num2 = this.state.allNumberCombos[0][1];
+    const newTempMarkersObject = this.state.tempMarkers;
+    if (!newTempMarkersObject) console.log('valid combos (BOTH numbers): there are no numbers in temp marker');
+    else {
+      if (newTempMarkersObject[num1]) console.log('this number is in temp marker');
+      else if (!newTempMarkersObject[num1]) console.log('this number is NOT in temp marker');
+    }
+    // if (newTempMarkersObject[num1] && newTempMarkersObject[num1] !== 1) console.log('valid combo: there is a match');
+    // else if (newTempMarkersObject[num1] && newTempMarkersObject[num1] === 1) console.log('NOT a valid combo: ' + num1 + ' has reached the top');
+    // else if (!newTempMarkersObject[num1] && newTempMarkersObject.length < 3) console.log('valid combo: there is room');
+    // else if (!newTempMarkersObject[num1] && newTempMarkersObject.length === 3) console.log('NOT a valid combo: there is no room');
+    // this.props.sendChosenDiceCombo(chosenDiceComboArray);
+    // this.props.history.push('/game');
   }
 
   combo2 = () => {
@@ -147,13 +183,15 @@ const mapStateToProps = (state) => {
   return {
     setCurrentPlayerColor: state.currentPlayerColor,
     setPlayers: state.players,
-    setupGameBoard: state.gameBoard
+    setupGameBoard: state.gameBoard,
+    setAvailableNumbers: state.availableNumbers
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    sendChosenDiceCombo: setChosenDiceCombo
+    sendChosenDiceCombo: setChosenDiceCombo,
+    sendTempMarkers: setTempMarkers
   }, dispatch);
 };
 

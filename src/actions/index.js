@@ -19,9 +19,30 @@ export const setChosenDiceCombo = (diceCombo) => {
   }
 }
 
+export const setCurrentPlayerNumber = (number) => {
+  return {
+    type: 'SET_CURRENT_PLAYER_NUMBER',
+    payload: number
+  }
+}
+
 export const setCurrentPlayerColor = (color) => {
   return {
     type: 'SET_CURRENT_PLAYER_COLOR',
     payload: color
+  }
+}
+
+export const setTempMarkers = (tempMarkers) => {
+  return {
+    type: 'SET_TEMP_WORKERS',
+    payload: tempMarkers
+  }
+}
+
+export const setAvailableNumbers = (availableNumbers) => {
+  return {
+    type: 'SET_AVAILABLE_NUMBERS',
+    payload: availableNumbers
   }
 }

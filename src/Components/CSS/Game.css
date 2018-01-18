@@ -7,3 +7,12 @@
   height: 3em;
   width: 7em;
 }
+
+.current-player {
+  margin: .5em 0 1em 0;
+}
+
+.player-marker {
+  width: auto;
+  height: 1.5em;
+}

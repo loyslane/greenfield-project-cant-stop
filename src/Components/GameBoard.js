@@ -12,12 +12,20 @@ class GameBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: this.props.setPlayers,
+      // players: this.props.setPlayers,
       currentPlayerColor: this.props.setCurrentPlayerColor,
       chosenDiceCombo: this.props.setChosenDiceCombo,
       gameBoard: this.props.setupGameBoard,
       gameBoardTitles: [2,3,4,5,6,7,8,9,10,11,12],
       columnWinners: this.props.setColumnWinners
+    }
+  }
+
+  componentWillMount() {
+    if (this.chosenDiceCombo) {
+      
+    } else {
+      console.log('there is no dice combo');
     }
   }
 
@@ -194,7 +202,7 @@ class GameBoard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    setPlayers: state.players,
+    // setPlayers: state.players,
     setCurrentPlayerColor: state.currentPlayerColor,
     setChosenDiceCombo: state.chosenDiceCombo,
     setupGameBoard: state.gameBoard,
